@@ -153,3 +153,88 @@ int removeLnTSpaces(char* string)
 
 	return errorCode;
 }
+
+
+/*
+Name:			spaceSeperatedItems()
+Description:
+This function finds how many groups of space-seperated characters are within a string.
+
+Parameters:
+char* inputString	- The pointer to the string to process.
+
+Return:
+int returnCode	- This returns the number of groups (of characters) that are seperated by spaces within the inputString.
+- If anything unexpected occurs, -1 is returned.
+*/
+int spaceSeperatedItems(char* inputString)
+{
+	int intBuff = 0;
+	char strBuff[MAX_STRING_LENGTH] = "";
+	char strCut[MAX_STRING_LENGTH] = "";
+	int assignFound = 0;
+	int returnCode = -1;
+
+	//pass input string into the buffer
+	strcpy(strBuff, inputString);
+
+	if (sscanf(strBuff, "%[ ]%[^\0]", strCut, strCut) == 1)
+	{	//If the string has nothing other than spaces (no groups of space-seperated characters were found), set returnCode to 0.
+		returnCode = 0;
+	}
+	else
+	{
+		for (int assignCount = 0; true; assignCount++)
+		{	//Otherwise, run through a for to find the number of space-seperated groups of characters.
+
+			//Find the first set of space-seperated characters and split it from the rest of the string.
+			intBuff = sscanf(strBuff, "%s %[^\0]", strCut, strBuff);
+
+
+			if (intBuff == 2) //If a group was succesfully found and thee is leftover characters.
+			{	// Add one to the number of groups found.
+				assignFound += 1;
+			}
+			else if (intBuff == 1) // If a group was successfully found but there is no more leftover characters.
+			{	// Add one to the number of groups found, set the numer found so far to return and break.
+				assignFound += 1;
+				returnCode = assignFound;
+				break;
+			}
+			else // Any unexpected results will set the return code to -1 and break out of loop.
+			{
+				returnCode = -1;
+				break;
+			}
+		}
+	}
+
+	// Exit function.
+	return returnCode;
+}
+
+
+/*
+Name:			cmpStringToChar()
+Description:
+This function is usd to compare a 1 character string to a char. The comparison is case-sensitive.
+
+Parameters:
+char* cmpString		- The pointer to the string to compare to a char.
+char cmpCar			- The char to compare to a string.
+
+Return:
+bool match	- If the one-character string matches the char, true will be returned. Otherwise, false will be returned.
+*/
+bool cmpStringToChar(char* cmpString, char cmpChar)
+{
+	bool match = false;
+
+	// Check that the cmpString is one char in length and that the first element is equal to the cmpChar.
+	if (strlen(cmpString) == 1 && cmpString[0] == cmpChar)
+	{
+		match = true;
+	}
+
+	return match;
+}
