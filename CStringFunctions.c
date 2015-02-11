@@ -1,5 +1,5 @@
 /*
-Filename:	String Based Functions.c
+Filename:	CStringFunctions.c
 Project:	C/C++ Function Library
 Programmer:	MeMark2
 Description:	
