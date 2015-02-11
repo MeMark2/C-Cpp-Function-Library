@@ -1,4 +1,15 @@
 /*
+Filename:	String Based Functions.c
+Project:	C/C++ Function Library
+Programmer:	MeMark2
+Description:	
+	This file holds numerous functions that deal with C String manipulation.
+*/
+
+
+
+
+/*
 Name:			lexiStrCmp()
 Description:
 	This function compares the contents of two arrays of char in order to figure out their lexicographical order.
