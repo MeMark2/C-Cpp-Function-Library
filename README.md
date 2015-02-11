@@ -1,2 +1,2 @@
-# C-Function-Library
-A library of re-usable C functions.
+# C-Cpp-Function-Library
+A library of re-usable C/C++ functions.
